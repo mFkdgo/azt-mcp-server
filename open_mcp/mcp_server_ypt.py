@@ -7,6 +7,9 @@ mcp = FastMCP("demo")
 
 @mcp.tool()
 def _parse_response() -> str:
+        """
+        获取一签通云平台APP基础信息
+        """
         response = requests.post(url=API_URL, params={}, timeout=5)
         response.raise_for_status()
         response = response.json()
@@ -19,7 +22,10 @@ def _parse_response() -> str:
         return result["projectName"] + result["projectNo"] + result["uums_url"]
 
 @mcp.tool()
-def _get_test() -> str:
+def _get_sign_val() -> str:
+        """
+        获取一签通云平台签章数据
+        """
         return "111"
 
 def main():
